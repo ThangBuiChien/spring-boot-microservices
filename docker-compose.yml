@@ -54,6 +54,15 @@ services:
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9093
       - KAFKA_CLUSTERS_0_ZOOKEEPER=localhost:2181
 
+  # Add Zipkin for distributed tracing
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mem
+
 volumes:
   zookeeper_data:
     driver: local
