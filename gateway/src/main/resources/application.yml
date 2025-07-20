@@ -18,3 +18,8 @@ spring:
     sampler:
       probability: 1.0
 
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    org.springframework.web: INFO
+

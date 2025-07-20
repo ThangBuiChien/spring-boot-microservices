@@ -32,7 +32,7 @@ public class AuthService {
     }
 
     public RegisterDto register(RegisterRequest request) {
-//        log.info("Registering user with username: {}", request.getUsername());
+        log.info("Registering user with username: {}", request.getUsername());
         return userServiceClient.save(request).getBody();
     }
 }

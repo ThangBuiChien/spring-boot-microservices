@@ -46,6 +46,11 @@ public class UserController {
 
     @GetMapping("/getUserByUsername/{username}")
     public ResponseEntity<AuthUserDto> getUserByUsername(@PathVariable String username) {
+        try {
+            Thread.sleep(1000); // Sleep for 2 seconds
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         return ResponseEntity.ok(modelMapper.map(userService.getUserByUsername(username), AuthUserDto.class));
     }
 

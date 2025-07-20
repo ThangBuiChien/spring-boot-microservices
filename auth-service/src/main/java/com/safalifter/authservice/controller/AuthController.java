@@ -20,6 +20,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody LoginRequest request) {
+        try {
+            Thread.sleep(2000); // Sleep for 2 seconds
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         return ResponseEntity.ok(authService.login(request));
     }
 

@@ -10,6 +10,7 @@ import com.safalifter.userservice.repository.UserRepository;
 import com.safalifter.userservice.request.RegisterRequest;
 import com.safalifter.userservice.request.UserUpdateRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -32,6 +34,7 @@ public class UserService {
                 .email(request.getEmail())
                 .role(Role.USER)
                 .active(Active.ACTIVE).build();
+        log.info("Saving user with username: {}", toSave.getUsername());
         return userRepository.save(toSave);
     }
 
